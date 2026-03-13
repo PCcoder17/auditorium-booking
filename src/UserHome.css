@@ -1,40 +1,21 @@
-/* src/UserHome.css */
-
-/* ✅ 1. DARK NEBULA BACKGROUND */
+/* ✅ MAIN CONTAINER FIX */
 .modern-home-container {
-  min-height: 100vh;
-  /* Deep Dark Gradient Background */
-  background: radial-gradient(circle at 10% 20%, rgb(34, 40, 49) 0%, rgb(18, 18, 18) 90%);
-  background-size: cover;
-  padding: 40px;
+  min-height: 100vh; /* Fixed height (100vh) ki jagah min-height rakho taaki scroll ho sake */
+  width: 100%;
+  background: #121212;
+  padding: 40px 30px 80px 30px; /* Niche 80px padding di hai taaki cards chipke na */
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Vertical scroll allow karne ke liye */
   position: relative;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: white; /* Text ko white kar diya */
-  overflow-x: hidden;
 }
 
-/* Background mein thoda design element (Abstract Blobs) */
-.modern-home-container::before {
-  content: "";
-  position: absolute;
-  top: -10%;
-  right: -10%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(30, 60, 114, 0.4), transparent 70%);
-  z-index: 0;
-  pointer-events: none;
-}
-.modern-home-container::after {
-  content: "";
-  position: absolute;
-  bottom: -10%;
-  left: -10%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(231, 76, 60, 0.15), transparent 70%);
-  z-index: 0;
-  pointer-events: none;
+/* ✅ GLOBAL BODY FIX */
+/* Agar tune pehle body pe overflow: hidden lagaya tha, toh usey hatana padega */
+body {
+  overflow-y: auto !important; /* Force scroll enable */
+  height: auto !important;
+  margin: 0;
 }
 
 /* ✅ 2. FLOATING LOGO (Ab White Glow karega) */
@@ -111,10 +92,10 @@
 .modern-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  padding: 10px;
-  position: relative;
-  z-index: 1;
+  gap: 25px;
+  width: 100%;
+  margin-top: 40px;
+  padding-bottom: 50px; /* Extra safety gap */
 }
 
 /* Base Card Style - DARK GLASS */
@@ -194,3 +175,59 @@
 .card-teal { border-bottom: 4px solid #34495e; }
 .card-teal:hover { box-shadow: 0 10px 40px rgba(52, 73, 94, 0.5); }
 .card-teal:hover .card-icon { color: #bdc3c7; }
+/* =========================================
+   🔥 LOCUS BRANDING - PREMIUM TOP LAYOUT
+   ========================================= */
+
+/* LOCUS Text Position (Top) */
+.home-locus-brand {
+  position: absolute;
+  top: 30px; /* Sabse upar */
+  left: 35px;
+  z-index: 25;
+}
+
+.locus-text-main {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: 5px;
+  color: #ffffff;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  /* Silver Matte Gradient */
+  background: linear-gradient(to right, #ffffff, #999);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.locus-underline {
+  height: 3px;
+  width: 50px;
+  background: #1a73e8; /* Blue accent */
+  margin-top: 4px;
+  border-radius: 2px;
+}
+
+/* GD Goenka Logo Position (Shifted Down) */
+.floating-logo {
+  position: absolute;
+  top: 95px; /* LOCUS ke theek niche */
+  left: 35px;
+  width: 140px;
+  z-index: 10;
+  transition: transform 0.3s ease;
+}
+
+/* Header adjust taaki logo se na takraye */
+.modern-header {
+  margin-top: 60px !important;
+}
+
+/* Responsiveness check: Chhoti screen pe overlap na ho */
+@media (max-width: 768px) {
+  .home-locus-brand { top: 20px; left: 20px; }
+  .floating-logo { top: 75px; left: 20px; width: 110px; }
+  .locus-text-main { font-size: 24px; }
+}

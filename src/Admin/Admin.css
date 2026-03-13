@@ -1,278 +1,396 @@
-/* src/Admin/Admin.css */
-
-/* ✅ 1. DARK BACKGROUND FOR WHOLE PAGE */
+/* ✅ 1. GLOBAL LAYOUT */
 .admin-layout {
   display: flex;
-  min-height: 100vh;
-  /* Dark Nebula Gradient */
-  background: radial-gradient(circle at 10% 20%, rgb(34, 40, 49) 0%, rgb(18, 18, 18) 90%) !important;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 100vh;
+  width: 100vw;
+  background: #121212 !important;
   color: white !important;
+  overflow: hidden;
   position: relative;
-  overflow-x: hidden;
 }
 
-/* ✅ 2. MAIN CONTENT AREA (Transparent) */
-.admin-content {
-  flex: 1;
-  padding: 40px;
-  overflow-y: auto;
-  position: relative;
-  z-index: 1;
-  background: transparent !important; /* Force Transparent */
+/* ✅ 2. LOCUS BRANDING FIX */
+.locus-fixed-header {
+  position: fixed;
+  top: 15px;
+  left: 20px;
+  z-index: 3000;
 }
 
-/* ✅ 3. SIDEBAR (Dark Glass) */
+.locus-logo {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #ffffff;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #ffffff, #888);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ✅ 3. SIDEBAR (Wahi tere original specs) */
 .admin-sidebar {
-  width: 260px;
-  background: rgba(20, 20, 20, 0.7) !important; /* Darker Glass */
-  backdrop-filter: blur(15px);
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 20px;
+  width: 280px;
+  background: #1a1a1a !important;
   display: flex;
   flex-direction: column;
-  box-shadow: 5px 0 20px rgba(0,0,0,0.5);
+  padding: 25px 20px;
+  margin-top: 50px; /* Branding ke liye space */
+  height: calc(100vh - 50px);
+  transition: width 0.3s ease;
+  border-right: 1px solid #333;
+  flex-shrink: 0;
 }
 
-.sidebar-header h3 {
-  margin: 15px 0 5px;
-  color: #fff;
-  text-align: center;
-  font-size: 20px;
+.sidebar-collapsed .admin-sidebar {
+  width: 85px;
+  padding: 25px 10px;
 }
-.sidebar-header p { color: #aaa; text-align: center; font-size: 12px; }
 
-/* ✅ 4. MENU LINKS */
-.admin-menu { list-style: none; padding: 0; margin-top: 30px; }
+/* SIDEBAR HEADER */
+.sidebar-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
 
-.admin-menu li {
-  padding: 15px 20px;
-  margin-bottom: 12px;
+/* ✅ 4. NAVIGATION (Wapas wahi icons aur buttons) */
+.admin-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.admin-nav button {
+  background: #252525;
+  color: #ddd;
+  border: 1px solid #333;
+  padding: 15px;
+  text-align: left;
+  border-radius: 8px;
   cursor: pointer;
-  border-radius: 12px;
-  color: #ccc;
-  font-weight: 500;
-  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   gap: 12px;
-  border: 1px solid transparent;
+  transition: 0.2s;
 }
 
-.admin-menu li:hover {
-  background: rgba(255, 255, 255, 0.1);
+.admin-nav button:hover {
+  background: #333;
   color: white;
-  transform: translateX(5px);
 }
 
-.admin-menu li.active {
-  background: linear-gradient(90deg, #3498db, #2980b9);
-  color: white;
-  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
-}
-
-/* ✅ 5. LOGOUT BUTTON */
-.logout-btn {
-  margin-top: auto;
-  background: linear-gradient(45deg, #e74c3c, #c0392b);
-  color: white;
-  border: none;
-  padding: 12px;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-
-/* ✅ 6. PENDING CONTAINER & DATA CONTAINER (PURA BLACK FIX) */
-.pending-container, .data-container {
-  background: #0a0a0a !important; /* <-- Pura Deep Black, no transparency */
+/* ✅ 5. CONTENT AREA */
+.admin-content {
+  flex-grow: 1;
   padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8) !important; /* Stronger shadow */
-  border: 1px solid #333; /* Subtle dark border */
-  color: white !important;
+  margin-top: 50px;
+  background: #121212;
+  overflow-y: auto;
+  height: calc(100vh - 50px);
+}
+
+.admin-content > div {
+  width: 100% !important;
+  background: #000 !important;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
   min-height: 80vh;
 }
 
-/* Heading Line Fix */
-.section-title {
-  color: #fff !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 15px;
-  margin-bottom: 25px;
-  font-size: 24px;
-}
-
-/* ✅ 7. CARDS (Individual Request Cards) */
-.requests-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 25px;
-}
-
-.request-card {
-  background: rgba(20, 20, 20, 0.8) !important; /* Card Pitch Black Glass */
-  border-radius: 16px;
-  padding: 25px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-  transition: 0.3s;
-}
-.request-card:hover {
-  transform: translateY(-5px);
-  background: rgba(40, 40, 40, 0.95) !important;
-  border-color: rgba(52, 152, 219, 0.5);
-}
-
-.card-body h3 { margin: 0 0 10px; color: #3498db !important; font-size: 18px; }
-.card-body p { color: #ccc !important; font-size: 14px; margin: 8px 0; }
-
-/* ✅ 8. BUTTONS */
-.card-actions { display: flex; gap: 15px; margin-top: 20px; }
-
-.btn-approve {
-  flex: 1; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer;
-  background: rgba(46, 204, 113, 0.1); color: #2ecc71; border: 1px solid #2ecc71;
-}
-.btn-approve:hover { background: #2ecc71; color: white; }
-
-.btn-reject {
-  flex: 1; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer;
-  background: rgba(231, 76, 60, 0.1); color: #e74c3c; border: 1px solid #e74c3c;
-}
-.btn-reject:hover { background: #e74c3c; color: white; }
-
-/* ✅ 9. TABLE STYLES (Data Page) */
-/* ✅ 9. TABLE STYLES (PURA BLACK FIX) */
-.styled-table {
-  width: 100%; border-collapse: collapse;
-  background: #111 !important; /* <-- Table background pure black */
-  border-radius: 12px; overflow: hidden; margin-top: 20px;
-  color: #eee !important;
-  border: 1px solid #222;
-}
-
-.styled-table th {
-    background: #222 !important; /* <-- Header bhi dark black/grey */
-    color: white; padding: 15px; text-align: left;
-    border-bottom: 2px solid #333; /* Dark separator */
-}
-
-.styled-table td {
-    padding: 15px;
-    border-bottom: 1px solid #333; /* Dark row separator */
-    color: #ddd !important;
-}
-
-/* Hover effect ko bhi dark kiya */
-.styled-table tr:hover { background: #1a1a1a !important; }
-
-/* ✅ FILTER BAR (Horizontal Layout) */
-.filters-container {
+/* ✅ 6. FOOTER & LOGOUT (Fixed No White Box) */
+.sidebar-footer {
+  margin-top: auto;
   display: flex;
-  gap: 15px;
-  align-items: flex-end; /* Labels aur Input ko niche se align karega */
-  flex-wrap: wrap; /* Jagah kam padne par niche aayega */
-  background: rgba(0, 0, 0, 0.2);
-  padding: 15px;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 20px;
+  background: transparent !important; /* Force transparent background */
 }
 
+.footer-action-btn {
+  background: transparent !important; /* Kisi bhi halat mein white nahi hoga */
+  border: 1px solid #444 !important;
+  color: #aaa !important;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: none !important; /* Faltu ki shadow hatao */
+  outline: none !important; /* Focus outline hatao */
+}
+
+/* Hover par white nahi, balki halka dark glass effect aayega */
+.footer-action-btn:hover {
+  background: rgba(255, 255, 255, 0.05) !important; 
+  color: white !important;
+  border-color: #666 !important;
+}
+
+/* Logout ka special hover effect red hi rahega */
+.logout-special:hover {
+  background: #c0392b !important;
+  border-color: #c0392b !important;
+  color: white !important;
+}
+
+/* ✅ Extra Check: Agar button ke andar koi span ya div hai toh uska background bhi transparent ho */
+.footer-action-btn * {
+  background: transparent !important;
+}
+
+/* Body safety */
+body { overflow: hidden; margin: 0; }
+/* =========================================
+   ✅ 1. FILTERS HORIZONTAL FIX (Resource Type to Reset)
+   ========================================= */
+
+/* Saare labels aur inputs ko ek line mein laane ke liye */
+.admin-content > div > div:has(label), 
+.filters-container {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) auto !important; /* 4 inputs + Reset button */
+  gap: 15px !important;
+  align-items: flex-end !important;
+  margin-bottom: 30px !important;
+  background: transparent !important;
+}
+
+/* Individual Filter Groups */
 .filter-group {
   display: flex;
   flex-direction: column;
-  flex: 1; /* Sab barabar chaudai lenge */
-  min-width: 150px; /* Bahut chota nahi hoga */
+  gap: 8px;
 }
 
 .filter-group label {
-  font-size: 13px;
-  margin-bottom: 5px;
-  color: #bbb;
+  font-size: 12px !important;
+  color: #888 !important;
+  text-transform: uppercase;
   font-weight: bold;
 }
 
 .filter-group select, 
 .filter-group input {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(30, 30, 30, 0.8);
-  color: white;
-  outline: none;
+  background: #111 !important;
+  border: 1px solid #333 !important;
+  color: white !important;
+  padding: 10px !important;
+  border-radius: 6px !important;
+  width: 100% !important;
 }
 
-.filter-group select:focus, 
-.filter-group input:focus {
-  border-color: #3498db;
-  background: rgba(40, 40, 40, 0.9);
-}
-
-/* Reset Button Style */
+/* Reset Button Alignment */
+/* ✅ RESET BUTTON - Matching Delete & Premium Theme */
 .reset-btn {
-  padding: 10px 20px;
-  background: #e74c3c;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  height: 40px; /* Input ke barabar height */
-  transition: 0.3s;
-}
-.reset-btn:hover {
-  background: #c0392b;
+  background: linear-gradient(45deg, #d32f2f, #b71c1c) !important; /* Professional Dark Red */
+  color: white !important;
+  border: none !important;
+  padding: 10px 25px !important;
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  height: 42px !important; /* Input ki height se match karne ke liye */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(211, 47, 47, 0.2);
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.5px;
 }
 
-/* Export Button Style Fix */
-.export-btn {
-  background: #27ae60;
-  color: white;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
+.reset-btn:hover {
+  background: linear-gradient(45deg, #f44336, #d32f2f) !important; /* Thoda bright on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(211, 47, 47, 0.4);
 }
+
+.reset-btn:active {
+  transform: translateY(0);
+}
+
+/* Force horizontal alignment if it's jumping */
+.filters-container {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-end !important;
+  gap: 15px !important;
+  flex-wrap: nowrap !important;
+}
+
 /* =========================================
-   ✅ FORCE ALL BLACK TABLE FIX 
+   ✅ 2. TABLE BLACK & WHITE STRIP REMOVAL
    ========================================= */
 
-/* 1. Container ko Pura Black karo */
-.data-container {
-  background: #000000 !important; /* Pitch Black */
-  color: white !important;
+.styled-table { 
+  width: 100%; 
+  border-collapse: collapse; 
+  background: #000 !important; 
+}
+
+/* Force EVERY row to be Black (White strip hatane ka pakka ilaaj) */
+.styled-table tr, 
+.styled-table tr:nth-child(even), 
+.styled-table tr:nth-child(odd) {
+  background-color: #000 !important; /* Alternate white row khatam */
+  color: #ddd !important;
+  border-bottom: 1px solid #222 !important;
+}
+
+.styled-table th { 
+  background: #1a3c72 !important; 
+  color: white; 
+  padding: 15px; 
+  text-align: left;
+  white-space: nowrap;
+}
+
+.styled-table td { 
+  padding: 15px; 
+  background-color: #000 !important;
+  vertical-align: middle;
+}
+
+/* ✅ 3. EVENT DETAILS HORIZONTAL FIX */
+/* Isse "Event Name" aur "By: Host" ek hi line mein rahenge */
+.styled-table td:nth-child(4) { 
+  white-space: nowrap !important; /* No vertical stacking */
+}
+
+.styled-table td:nth-child(4) strong {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.styled-table td:nth-child(4) span {
+  color: #666;
+  font-size: 13px;
+}
+
+/* Layout safety */
+.admin-content > div {
+  width: 100% !important;
+  background: #000 !important;
+  padding: 25px;
+  border-radius: 15px;
+  overflow-x: auto; /* Table scroll karegi agar phategi toh */
+}
+/* ✅ Classy Integrated Title & Matte Logo styling */
+.admin-branding-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px; /* Logo aur title ke beech gap */
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Base Title Style - Fixed Position */
+.locus-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Locus Blue-to-Silver Gradient */
+.locus-l { color: #1a73e8; }
+.locus-rest { color: #aaa; font-weight: 400; }
+.admin-tag { color: #888; font-weight: 400; font-size: 16px; margin-left: 5px; }
+
+/* 🔥 Matte Finish L Logo */
+.locus-matte-logo {
+  font-size: 22px;
+  font-weight: 800;
+  color: #3498db; /* Deep Matte Blue */
+  background: #111; /* Dark background contrasting matte logo */
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #222; /* Minimal boundary */
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.5); /* Dark depth/matte effect */
+}
+/* ✅ DASHBOARD HEADER INTEGRATION */
+.dashboard-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #222; /* Dashboard look classy karne ke liye */
+}
+
+.brand-integration {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Sidebar wale LOCUS jaisa exact look */
+.locus-logo-main {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #ffffff;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #ffffff, #888);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.vertical-line {
+  color: #444;
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.dashboard-heading {
+  font-size: 20px;
+  color: #ddd;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.icon-style {
+  margin-right: 10px;
+}
+/* ✅ 7 Days + 1 Time Column = 8 Columns Total */
+.timetable-grid {
+  display: grid !important;
+  grid-template-columns: 80px repeat(7, 1fr) !important; 
+  width: 100%;
+  background: #000;
   border: 1px solid #333;
 }
 
-/* 2. Table Header (Thoda sa Dark Grey taaki alag dikhe) */
-.styled-table th {
-  background: #1a1a1a !important;
-  color: #ffd700 !important; /* Gold Text for Headers */
-  border-bottom: 2px solid #444;
+/* Day headers ko bhi 7 columns ke hisaab se set karo */
+.timetable-header {
+  display: grid;
+  grid-template-columns: 80px repeat(7, 1fr);
+  background: #1a3c72;
+  font-weight: bold;
 }
 
-/* 3. Table Rows - SAB BLACK (No White Strips) */
-.styled-table tbody tr,
-.styled-table tbody tr:nth-child(even),
-.styled-table tbody tr:nth-child(odd) {
-  background-color: #000000 !important; /* Force Black Background */
-  color: white !important;
+/* Booked slot ko thoda highlight karo taaki pata chale click karna hai */
+.time-slot.booked {
+  cursor: pointer;
+  background-color: rgba(26, 115, 232, 0.2) !important;
+  border-left: 3px solid #1a73e8;
+  color: #fff;
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* 4. Row Cells (Border ke saath) */
-.styled-table td {
-  background-color: #000000 !important; /* Cell bhi Black */
-  color: #e0e0e0 !important; /* Text White/Grey */
-  border-bottom: 1px solid #333 !important; /* Separator Line */
-}
-
-/* 5. Hover Effect (White nahi hoga, bas thoda highlight hoga) */
-.styled-table tbody tr:hover td {
-  background-color: #151515 !important; /* Hover pe halka sa grey */
-  color: white !important;
-  transition: 0.2s;
+.time-slot.booked:hover {
+  background-color: rgba(26, 115, 232, 0.4) !important;
 }

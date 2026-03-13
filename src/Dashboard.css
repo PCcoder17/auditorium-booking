@@ -204,3 +204,80 @@ option { background: #2c3e50; color: white; }
 body {
   overflow-x: hidden;
 }
+/* ✅ BOOKING DETAILS CARD STYLING */
+.booking-details-card {
+  margin-top: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 25px;
+  animation: slideUp 0.3s ease-out;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 10px;
+}
+
+.details-header h3 {
+  color: #fff;
+  margin: 0;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.close-details {
+  background: transparent;
+  border: none;
+  color: #888;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.close-details:hover { color: #fff; }
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.detail-item span {
+  font-size: 11px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.detail-item strong {
+  font-size: 15px;
+  color: #ddd;
+}
+
+/* Status Badges */
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  width: fit-content;
+}
+
+.status-badge.APPROVED { background: #27ae60; color: white; }
+.status-badge.PENDING { background: #f1c40f; color: black; }
+
+/* Entry Animation */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

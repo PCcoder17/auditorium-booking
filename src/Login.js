@@ -26,13 +26,13 @@ function Login({ setUser }) {
 
       <div className="login-box">
         {/* ✅ INLINE STYLE: Ye color ko force karega Black hone ke liye */}
-        <h2 style={{ color: "#000000", fontWeight: "bold", textShadow: "none" }}>
-          🎓 Welcome to GD Goenka
-        </h2>
-        
-        <p style={{ color: "#000000", fontWeight: "500", textShadow: "none" }}>
-          Auditorium & Meeting Room Booking Portal
-        </p>
+        <h2 style={{ color: "black", fontWeight: "bold", textShadow: "none" }}>
+  🎓 Welcome to GD Goenka
+</h2>
+
+<p style={{ color: "black", fontWeight: "500", textShadow: "none" }}>
+  Auditorium & Meeting Room Booking Portal
+</p>
 
         <button className="google-btn" onClick={handleLogin}>
           <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="G" />

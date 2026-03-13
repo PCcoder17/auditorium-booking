@@ -7,8 +7,18 @@ import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import "./Dashboard.css"; 
 
-const auditoriums = ["Audi B Block (Ground Floor)","Audi C block UID (Av Room)","Audi SoHT",  "Moot Court Hall D block","Amphitheater", "Staff Refractory, B Block","Student Refractory, B Block","Staff Refractory, D Block","UID Courtyard, C Block"];
-const slots = ["09:10 AM - 10:00 AM", "10:00 AM - 10:50 AM", "10:50 AM - 11:40 AM", "11:40 AM - 12:30 PM", "12:30 PM - 01:20 PM", "01:20 PM - 02:10 PM", "02:10 PM - 03:00 PM", "03:00 PM - 03:50 PM", "03:50 PM - 04:30 PM"];
+// Isko apne purane auditorium array se replace kar de
+const auditoriumRooms = [
+  "Audi, B Block, Ground Floor",
+  "Audi C block UID (Av Room)",
+  "Audi SoHT",
+  "Moot Court Hall D block",
+  "Ampitheatre",
+  "Staff Refractory, B Block",
+  "Student Refractory, B Block",
+  "Staff Refractory, D Block",
+  "UID Courtyard, C Block"
+];const slots = ["09:10 AM - 10:00 AM", "10:00 AM - 10:50 AM", "10:50 AM - 11:40 AM", "11:40 AM - 12:30 PM", "12:30 PM - 01:20 PM", "01:20 PM - 02:10 PM", "02:10 PM - 03:00 PM", "03:00 PM - 03:50 PM", "03:50 PM - 04:30 PM"];
 const countryCodes = ["+91", "+1", "+44", "+971"];
 
 function AuditoriumBooking({ user }) {

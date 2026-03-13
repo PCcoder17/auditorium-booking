@@ -2,115 +2,65 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Dashboard.css"; 
 
+// 👇 EXCEL SHEET WALA NAYA DATA 👇
 const auditoriumData = [
-  { name: "Audi, B Block (Ground Floor)", capacity: "282 Seats", speakers: "0", mics: "2 wireless", projector: "2", facilities:"2 podiums and 3 podium mics",extra: "1 Device, Internet connectivity"  },
-  { name: "Audi C block UID (Av Room)", capacity: "120 Seats", speakers: "2", mics: "2 wireless", projector: "1", facilities:"1 podium and 1 podium mic",extra: "1 Device, Internet connectivity"  },
-  { name: "Audi SoHT ", capacity: "50 Seats", speakers: "2", mics: "2 wireless,2 wired", projector: "0", facilities:"1 podium and 1 podium mic",extra: "1 Device, Internet connectivity,2 Monitor"  },
-  { name: "Moot Court Hall D block ", capacity: "50 Seats", speakers: "4", mics: "5 wired", projector: "2", facilities:"2 podium and 2 podium mic",extra: "1 Device, Internet connectivity,2 Monitor"  },
-  { name: "Amphitheatre  ", capacity: "open  ", speakers: "2", mics: "As per requirement", projector: "0" },
-  { name: "Block B Staff Refractory   ", capacity: "50 Seats" },
-  { name: "Block D Staff Refractory   ", capacity: "50 Seats"},
-  { name: "UID Courtyard, C Block ", capacity: "50 Seats", speakers: "4", mics: "2 Wired", projector: "1", facilities:"1 podium and 2 podium mic",extra: " 1 Device" },
-  { name: "Block B Student Refractory   ", capacity: "250 Seats" },
-
+  { id: 1, name: "Audi, B Block, Ground Floor", capacity: "282", projectors: "2", wirelessMics: "2", wiredMics: "0", speakers: "0", devices: "1", internet: "YES", additionalIT: "2 podiums and 3 podium mics", tvMonitor: "0" },
+  { id: 2, name: "Audi C block UID (Av Room)", capacity: "120", projectors: "1", wirelessMics: "2", wiredMics: "0", speakers: "2", devices: "1", internet: "YES", additionalIT: "1 podium and 1 podium mic", tvMonitor: "0" },
+  { id: 3, name: "Audi SoHT", capacity: "50", projectors: "0", wirelessMics: "2", wiredMics: "2", speakers: "2", devices: "1", internet: "YES", additionalIT: "1 podium and 1 podium mic", tvMonitor: "2" },
+  { id: 4, name: "Moot Court Hall D block", capacity: "50", projectors: "2", wirelessMics: "0", wiredMics: "5", speakers: "4", devices: "1", internet: "YES", additionalIT: "2 podium and 2 podium mic", tvMonitor: "2" },
+  { id: 5, name: "Ampitheatre", capacity: "open", projectors: "0", wirelessMics: "0", wiredMics: "0", speakers: "2", devices: "0", internet: "YES", additionalIT: "NA", tvMonitor: "NA" },
+  { id: 6, name: "Staff Refractory, B Block", capacity: "50", projectors: "NA", wirelessMics: "NA", wiredMics: "NA", speakers: "NA", devices: "NA", internet: "YES", additionalIT: "NA", tvMonitor: "NA" },
+  { id: 7, name: "Student Refractory, B Block", capacity: "250", projectors: "NA", wirelessMics: "NA", wiredMics: "NA", speakers: "NA", devices: "NA", internet: "YES", additionalIT: "NA", tvMonitor: "NA" },
+  { id: 8, name: "Staff Refractory, D Block", capacity: "50", projectors: "NA", wirelessMics: "NA", wiredMics: "NA", speakers: "NA", devices: "NA", internet: "YES", additionalIT: "NA", tvMonitor: "NA" },
+  { id: 9, name: "UID Courtyard, C Block", capacity: "50", projectors: "1", wirelessMics: "NA", wiredMics: "2", speakers: "4", devices: "1", internet: "YES", additionalIT: "1 podium, 2 podium mic", tvMonitor: "NA" }
 ];
 
 function AuditoriumDetails() {
   const navigate = useNavigate();
+
   return (
-    <div className="dashboard-container" style={{padding:"0", minHeight:"100vh", background: "linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)"}}>
+    <div className="dashboard-container" style={{ padding: "0", minHeight: "100vh", background: "#f4f6f9" }}>
       
-      {/* ✅ Logo Fixed: image.png */}
-      <img src="/image.png" alt="Logo" style={{position:"absolute", top:"5px", left:"20px", width:"150px", zIndex:1000, background:"#1e3c72", padding:"8px", borderRadius:"5px", boxShadow:"0 2px 5px rgba(0,0,0,0.2)"}} />
-      
-      {/* ✅ Uniform Header (Matches Booking Page) */}
-      <header style={{
-         background: "#1e3c72", 
-         height: "80px", 
-         display: "flex", 
-         alignItems: "center", 
-         justifyContent: "center",
-         paddingLeft: "200px", 
-         paddingRight: "40px", 
-         boxShadow: "0 4px 10px rgba(0,0,0,0.3)", 
-         marginBottom: "40px"
-      }}>
-         <h2 style={{color: "white", margin: 0, fontSize: "28px"}}>🏟️ Auditorium Facilities</h2>
-         
-         <button onClick={() => navigate("/home")} style={{
-             marginLeft: "auto", 
-             background:"transparent", 
-             border:"1px solid white", 
-             color:"white", 
-             padding:"8px 15px", 
-             borderRadius:"5px", 
-             cursor:"pointer",
-             fontWeight: "bold"
-         }}>
-            ⬅ Back Home
-         </button>
+      {/* HEADER */}
+      <header style={{ background: "#1e3c72", padding: "15px 40px", display: "flex", justifyContent: "space-between", alignItems: "center", boxShadow: "0 4px 15px rgba(0,0,0,0.3)" }}>
+        <h2 style={{ color: "white", margin: 0, fontSize: "24px", fontWeight: "bold" }}>
+          🎭 Auditorium & Venue Facilities
+        </h2>
+        <button onClick={() => navigate("/home")} style={{ background: "rgba(255,255,255,0.2)", color: "white", border: "1px solid rgba(255,255,255,0.5)", padding: "8px 15px", borderRadius: "20px", cursor: "pointer", fontWeight: "bold" }}>
+          ⬅ Back Home
+        </button>
       </header>
 
-      {/* Details Cards */}
-      <div style={{padding: "0 40px", display:"grid", gridTemplateColumns:"repeat(auto-fit, minmax(300px, 1fr))", gap:"20px"}}>
-        {auditoriumData.map((audi, index) => (
-         <div key={index} style={{
-  background:"white",
-  padding:"25px",
-  borderRadius:"10px",
-  boxShadow:"0 10px 30px rgba(0,0,0,0.3)",
-  borderLeft:"5px solid #3498db"
-}}>
-
-<h3 style={{
-  margin:"0 0 15px 0",
-  color:"#2c3e50",
-  fontSize:"22px",
-  borderBottom:"1px solid #eee",
-  paddingBottom:"10px"
-}}>
-{audi.name}
-</h3>
-
-{audi.capacity && (
-<div style={{color:"#333", marginBottom:"8px", fontSize:"15px"}}>
-<strong>🪑 Capacity:</strong> {audi.capacity}
-</div>
-)}
-
-{audi.speakers && (
-<div style={{color:"#333", marginBottom:"8px", fontSize:"15px"}}>
-<strong>🔊 Speakers:</strong> {audi.speakers}
-</div>
-)}
-
-{audi.mics && (
-<div style={{color:"#333", marginBottom:"8px", fontSize:"15px"}}>
-<strong>🎤 Mics:</strong> {audi.mics}
-</div>
-)}
-
-{audi.projector && (
-<div style={{color:"#333", marginBottom:"8px", fontSize:"15px"}}>
-<strong>📽️ Projector:</strong> {audi.projector}
-</div>
-)}
-
-{audi.facilities && (
-<div style={{color:"#333", marginBottom:"8px", fontSize:"15px"}}>
-<strong>🎛 Facilities:</strong> {audi.facilities}
-</div>
-)}
-
-{audi.extra && (
-<div style={{color:"#333", marginBottom:"8px", fontSize:"15px"}}>
-<strong>✨ Extra:</strong> {audi.extra}
-</div>
-)}
-
-</div>
-               ))}
+      {/* DETAILS GRID */}
+      <div style={{ padding: "40px", display: "flex", flexWrap: "wrap", gap: "20px", justifyContent: "center" }}>
+        {auditoriumData.map((room) => (
+          <div key={room.id} className="white-info-card" style={{
+            background: "white", 
+            width: "380px", 
+            padding: "20px", 
+            borderRadius: "15px", 
+            boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+            borderTop: "5px solid #1e3c72"
+          }}>
+            <h3 style={{ color: "#1e3c72", borderBottom: "2px solid #eee", paddingBottom: "10px", marginTop: "0" }}>
+              {room.name}
+            </h3>
+            
+            <div style={{ color: "#333", fontSize: "14px", lineHeight: "1.8" }}>
+              <p style={{margin: "4px 0"}}>👥 <strong>Capacity:</strong> {room.capacity}</p>
+              <p style={{margin: "4px 0"}}>📽️ <strong>Projectors:</strong> {room.projectors} | 📺 <strong>TV Monitor:</strong> {room.tvMonitor}</p>
+              <p style={{margin: "4px 0"}}>🎤 <strong>Mics:</strong> Wireless ({room.wirelessMics}) | Wired ({room.wiredMics})</p>
+              <p style={{margin: "4px 0"}}>🔊 <strong>Speakers:</strong> {room.speakers}</p>
+              <p style={{margin: "4px 0"}}>💻 <strong>Devices (Laptops):</strong> {room.devices}</p>
+              <p style={{margin: "4px 0"}}>🌐 <strong>Internet:</strong> {room.internet}</p>
+              <p style={{margin: "4px 0", background: "#f8f9fa", padding: "5px", borderRadius: "5px"}}>
+                🛠️ <strong>Add. IT Facilities:</strong> <br/>{room.additionalIT}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
+      
     </div>
   );
 }

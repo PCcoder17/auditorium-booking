@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "./firebase";
-import "./UserHome.css"; // ✅ Ensure this file exists
+import "./UserHome.css"; 
 
 function UserHome({ user, setUser }) {
   const navigate = useNavigate();
@@ -17,24 +17,33 @@ function UserHome({ user, setUser }) {
   };
 
   return (
-    <div className="modern-home-container">
-      {/* Logo */}
-      <img src="/image.png" alt="Logo" className="floating-logo" />
+      
+      <div className="modern-home-container">
+  
+  {/* ✅ 1. LOCUS BRANDING (Ab Sabse Upar) */}
+  <div className="home-locus-brand">
+    <h1 className="locus-text-main">LOCUS</h1>
+    <div className="locus-underline"></div>
+  </div>
+
+  {/* ✅ 2. GD GOENKA LOGO (Ab LOCUS ke Niche) */}
+  <img src="/image.png" alt="Logo" className="floating-logo" />
+
+  {/* ... baaki header aur grid same rahega ... */}
 
       <header className="modern-header"> 
         <div className="welcome-section">
-           <h1>👋 Welcome, {user?.displayName ? user.displayName.split(" ")[0] : "User"}</h1>
-           {isAdmin && (
-             <button onClick={() => navigate("/admin")} className="modern-admin-btn">
-               🛡️ Admin Panel
-             </button>
-           )}
+            <h1>👋 Welcome, {user?.displayName ? user.displayName.split(" ")[0] : "User"}</h1>
+            {isAdmin && (
+              <button onClick={() => navigate("/admin")} className="modern-admin-btn">
+                🛡️ Admin Panel
+              </button>
+            )}
         </div>
         <button className="modern-logout-btn" onClick={handleLogout}>Logout</button>
       </header>
 
       <div className="modern-grid">
-        {/* Booking Cards */}
         <div className="modern-card card-blue" onClick={() => navigate("/auditorium")}>
           <div className="card-icon">🏟️</div>
           <h3>Book Auditorium</h3>
@@ -53,14 +62,12 @@ function UserHome({ user, setUser }) {
           <p>Track your requests & status.</p>
         </div>
 
-        {/* ✅ RENAMED TO RESOURCE TRACKER */}
         <div className="modern-card card-purple" onClick={() => navigate("/schedule")}>
           <div className="card-icon">📊</div>
           <h3>Resource Tracker</h3>
           <p>Live availability of all rooms.</p>
         </div>
 
-        {/* Info Cards */}
         <div className="modern-card card-cyan" onClick={() => navigate("/auditorium-details")}>
           <div className="card-icon">ℹ️</div>
           <h3>Auditorium Info</h3>
