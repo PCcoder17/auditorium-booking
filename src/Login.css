@@ -1,0 +1,75 @@
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.top-logo {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  width: 320px;
+  z-index: 10;
+  background: #1e3c72;
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.login-box {
+  background: white !important; /* Force White Background */
+  padding: 40px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  width: 350px;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.login-box h2 {
+  margin-bottom: 10px;
+  /* ✅ Force Black Color & Remove Shadow */
+  color: black !important; 
+  text-shadow: none !important;
+  font-weight: bold;
+}
+
+.login-box p {
+  /* ✅ Force Black Color & Remove Shadow */
+  color: black !important;
+  text-shadow: none !important;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 16px;
+  transition: 0.3s;
+  color: black !important; /* Button text bhi black */
+}
+
+.google-btn:hover {
+  background: #f1f1f1;
+}
+
+.google-btn img {
+  width: 20px;
+  margin-right: 10px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

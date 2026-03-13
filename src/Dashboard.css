@@ -1,0 +1,206 @@
+/* src/Dashboard.css */
+
+/* ✅ 1. SEXY DARK BACKGROUND */
+body, .dashboard-container, .timetable-container {
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%) !important;
+  min-height: 100vh;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  background-attachment: fixed;
+}
+
+/* ✅ 2. GLASS EFFECT FOR CONTAINERS */
+.details-card, .dashboard aside, .dashboard main, .timetable-header, .filters-container {
+  background: rgba(0, 0, 0, 0.4) !important; /* Thoda Darker Glass taaki text dikhe */
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  color: white;
+  margin-bottom: 20px;
+}
+
+/* ✅ 3. TEXT VISIBILITY FIX (Most Important) */
+h2, h3, h4 {
+  color: #ffffff !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+label {
+  color: #ffffff !important; /* ✅ LABELS AB WHITE HONGE */
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+  letter-spacing: 0.5px;
+}
+
+p {
+  color: #eeeeee !important;
+}
+
+/* ✅ 4. INPUTS & DROPDOWNS */
+input, select {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: white !important;
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box; /* Fix width issues */
+}
+input::placeholder { color: #ccc; }
+input:focus, select:focus {
+  outline: none;
+  border-color: #3498db !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Option tag color black taaki dropdown khulne pe dikhe */
+option { background: #2c3e50; color: white; }
+
+/* ✅ 5. BUTTONS */
+.submit, .back-btn, .nav-btn {
+  background: linear-gradient(45deg, #1e3c72, #2a5298);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  margin-top: 10px;
+}
+.submit:hover, .nav-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
+
+/* ✅ 6. TRACKER DETAILS BOX (Off-White) */
+.tracker-details-box {
+  background: #f4f6f9 !important;
+  color: #333 !important; /* Text dark inside white box */
+}
+.tracker-details-box strong { color: #1e3c72; }
+.tracker-details-box div { color: #333; }
+/* src/Dashboard.css ke END mein paste kar */
+
+/* ✅ FIX 1: INFO PAGES KE SAFED CARDS KA TEXT BLACK KARNA */
+/* Hum specific class use kar rahe hain taaki global white text override ho sake */
+.white-info-card {
+  background: white !important;
+  color: #333 !important; /* Base text color dark */
+}
+
+.white-info-card h3 {
+  color: #1e3c72 !important; /* Dark Blue Title */
+  text-shadow: none !important; /* Shadow hata di */
+}
+
+.white-info-card p, 
+.white-info-card strong {
+  color: #333 !important; /* Pura text Dark Black */
+  opacity: 1 !important;
+}
+
+
+/* ✅ FIX 2: BOOKING PAGE LEGEND (Niche wala hissa) */
+.legend {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  /* Iske piche halka white background lagaya taaki black text dikhe */
+  background: rgba(255, 255, 255, 0.8) !important;
+  padding: 10px 15px;
+  border-radius: 8px;
+  width: fit-content;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: black !important; /* ✅ TEXT BLACK KAR DIYA */
+  font-weight: bold;
+}
+
+/* Dots ke colors same rahenge */
+.dot { height: 12px; width: 12px; border-radius: 50%; display: inline-block; margin-right: 8px; }
+.available { background: #fff; border: 1px solid #ccc; }
+.selected { background: #3498db; }
+.pending { background: #f1c40f; }
+.booked { background: #e74c3c; }
+/* ... Purana code waisa hi rehne de ... */
+
+/* ✅ CUSTOM CONFIRMATION MODAL */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Piche ka dhundhla background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(5px);
+}
+
+.modal-box {
+  background: #1e272e; /* Dark Grey Box */
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  width: 90%;
+  max-width: 400px;
+  color: white;
+  animation: popIn 0.3s ease;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-actions {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.btn-yes {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.btn-no {
+  background: #34495e;
+  color: white;
+  border: 1px solid #7f8c8d;
+  padding: 10px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.btn-yes:hover { background: #c0392b; }
+.btn-no:hover { background: #2c3e50; }
+/* ===============================
+   ✅ FIX: DASHBOARD LOGO ISSUE
+================================ */
+
+
+
+/* Body overflow safety */
+body {
+  overflow-x: hidden;
+}
